@@ -1,0 +1,121 @@
+POO -> programação orientada ao objeto
+OOP -> Object Oriented Programming
+OOAD -> Object Oriented Analysis and Design
+UML -> unified Modeling Language
+
+COMERN ada
+
+C -> Confiavel
+    O isolamento entre as partes gera algo mais segura.
+    Ao alterar uma das partes, nenhuma outra é afetada.
+    Ex: Caso voce tenha que trocar a roda de um carro,
+    você não precisa mexer em outras partes por que so
+    trocou a roda.
+
+O -> Oportuno
+    Ao dividir tudo em partes, cada uma delas pode ser
+    desenvolvida em paralelo.
+    Ex: Quem mexe no farol do carro não depende do
+    porta malas esta pronto.
+
+M -> manutenivel
+    Atualizar é mais fácil. Uma pequena alteração vai
+    beneficiar todas as partes relacionadas.
+    Ex: caso for trocado o motor de um carro por outro,
+    todo beneficio do outro motor fica pro carro.
+
+E -> Extensivel
+    Um sitema não deve ser estático. Tudo deve mudar e
+    crescer para permanecer útil.
+    Ex: caso precise viajar mais tem muito mais mala
+    do que espaço, posso colocar uma carretinha.
+
+R -> Reuntilizável
+    Objetos que foram criados para um sistema
+    podem ser aproveitados em outros sistemas.
+    Ex: o gol e o fox, ultilizam o mesmo modelo de motor.
+
+N -> Natural
+    Mais facil de entender. Maior atenção ás
+    funcionalidades do que aos detalhes de
+    implementação.
+    Ex: quando você vai comprar um carro você
+    precisa saber como o motor funciona, ou como
+    o sistema de frio age.
+
+CLASSE:
+
+biscoitoCoracao -> Classe()
+-----------------
+atributos da classe: são caracteristicas da classe
+    + tamanho
+    + massa
+    + peso
+    + cobertura
+    + cozido
+    + temperatura
+metodos da classe: são o que podemos fazer com a classe
+    + cozinhar()
+    + congelar()
+    + cobrir()
+    + confeitar()
+    + podeComer()
+    + comer()
+
+INSTÂNCIA
+    instalcia e seguir um padrão conforme a classe e a
+    ultilizando no objeto, ou seja no momento que a classe
+    cria um objeto e chamado instância.
+
+OBJETO
+    É uma coisa material ou abstrata que é feita a partir
+    de uma CLASSE e pode ser descrita por meio dos seus
+    ATRIBUTOS, MÉTODOS e ESTADO atual.
+
+tamanho = 8.2cm
+massa = baunilha
+peso = 54.3g
+cobertura = pistache
+cozido = True
+temperatura = 55ºC
+
+Isso acima e siginifica o estado dele, ou seja o estado
+é o objeto com os atributos preenchidos.
+
+------------------------------------------------------------------------------------------------------------------------
+BASE DE POO
+
+# Declaração de Classe
+class Gafanhoto:
+    def __iniT__(self): # Método construtor
+        # Atributos de Instância
+        self.nome = ''
+        self.idade = 0
+
+    # Método de Instância
+    def aniversario(self):
+        self.idade = self.idade + 1
+
+    def mensagem(self):
+        return f'{self.nome} é gafanhoto e tem {self.idade} anos de idade'
+
+
+# Declaração de objetos
+g1 = Gafanhoto()
+g1.nome = 'Lucas'
+g1.idade = 21
+g1.aniversario()
+print(g1.mensagem())
+
+g2 = Gafanhoto()
+g2.nome = 'Cinthia'
+g2.idade = 20
+g2.aniversario()
+print(g2.mensagem())
+
+------------------------------------------------------------------------------------------------------------------------
+rich.readthedocs.io
+biblioteca muito importante pro python
+rich_
+
+python -m rich.emoji -> este comando mostra todos os emojis

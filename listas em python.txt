@@ -1,0 +1,142 @@
+lanche = ("Hamburguer", "bebida", "pizza", "pudim")
+               0            1        2         3
+
+print(lanche[2])
+vai aparecer pizza
+
+lanche[3] = "picole"
+Ira dar erro, pois tuplas são imutáveis
+
+    ^
+    |
+Isso é uma tupla
+
+Tupla é entre ()
+Lista é entre []
+
+lanche = ["Hamburguer", "bebida", "pizza", "pudim"]
+               0            1        2         3
+
+print(lanche[2])
+vai aparecer pizza
+
+lanche[3] = "picole"
+lanche = ["Hamburguer", "bebida", "pizza", "picolé"]
+               0            1        2         3
+é possivel mudar um elemento
+
+lanche.append('cookie')
+lanche = ["Hamburguer", "bebida", "pizza", "picolé", "cookie"]
+               0            1        2         3         4
+
+lanche.insert[0, "cachorro quente"]
+lanche = ["cachorro quente","Hamburguer", "bebida", "pizza", "picolé", "cookie"]
+                  0              1            2        3         4         5
+
+o insert ira adicionar um elemento na posição desejada
+
+del lanche[3] -> elimina pela chave(posição)
+lanche.pop(3) -> elimina pela chave(posição)
+lanche.remove("pizza") -> elimina pelo conteúdo
+
+lanche = ["cachorro quente","Hamburguer", "bebida", "picolé", "cookie"]
+                  0              1            2        3         4    
+
+lanche.pop() -> irá remover o ultimo item (no caso o "cookie")
+
+lanche = ["cachorro quente","Hamburguer", "bebida", "picolé"]
+                  0              1            2         3        
+
+valores = list(range(4,11)) 
+list -> é uma função para criar uma Lista
+range(4,11) -> irá iniciar em 4 e terminar em 10(sempre termina 1 antes do parÂmetro passado)
+
+valores = [4,5,6,7,8,9,10]
+           0|1|2|3|4|5| 6 -> esses são os índices
+        
+valores = [8,2,5,4,9,3,0]
+valores.sort() -> função para ordernar 
+
+valores = [0,2,3,4,5,8,9]
+
+valores.sort(reverse=True)
+
+valores = [9,8,5,4,3,2,0]
+
+len(valores) -> lê quantos elementos tem na sua Lista
+
+print(len(valores)) == 7
+---------------------------------------------------------------------------------------
+                                    EXEMPLOS
+---------------------------------------------------------------------------------------
+valores = [] -> Lista vazia
+valores.append(5) -> add num
+valores.append(9) -> add num
+valores.append(4) -> add num
+
+for c, v in enumerate(valores): -> a função enumerate pega tanto o valor quanto o indice(c = indice e v = valor)
+  print(f"Na posição {c} encontrei o valor {v}!")
+print('cheguei ao final da lista.')
+
+resultado:
+Na posição 0 encontrei o valor 5!
+Na posição 1 encontrei o valor 9!
+Na posição 2 encontrei o valor 4!
+cheguei ao final da lista.
+
+---------------------------------------------------------------------------------------
+a = [2, 3, 4, 7]
+b = a
+
+print(f'Lista A: {a}')
+print(f'Lista B: {b}')
+
+resultado:
+[2, 3, 4, 7]
+[2, 3, 4, 7]
+
+ele copiou a lista, mas agr caso eu troque um valor
+a = [2, 3, 4, 7]
+b = a
+b[2] = 8
+print(f'Lista A: {a}')
+print(f'Lista B: {b}')
+
+resultado:
+[2, 3, 8, 7]
+[2, 3, 8, 7]
+
+ele ira mudar em ambas as listas, pois o python nao so copiou, ele criou uma ligação entre elas.
+para fazer uma cópia seria assim :
+
+a = [2, 3, 4, 7]
+b = a[:] -> ele pega todos os elementos de a ao inves de fazer uma ligação
+b[2] = 8
+print(f'Lista A: {a}')
+print(f'Lista B: {b}')
+
+resultado:
+[2, 3, 4, 7]
+[2, 3, 8, 7]
+---------------------------------------------------------------------------------------
+dados = ['Pedro', 25]
+pessoas.append(dados[:])
+
+pessoas
+  |"Pedro"|25||"Maria"|19||"João"|32 -> lista dentro de outra lista
+      0     1||    0    1||   0    1 -> indice da lista dados
+          0   |     1     |     2    -> indice da lista pessoas
+
+pessoas = [["Pedro", 25], ["Maria", 19], ["João", 32]] -> lista composta
+
+print(pessoas[0][0])
+resultado: Pedro
+
+print(pessoas[1][1])
+resultado: 19
+
+print(pessoas[2][0])
+resultado: João
+
+print(pessoas[1])
+resultado: ["Maria", 19]

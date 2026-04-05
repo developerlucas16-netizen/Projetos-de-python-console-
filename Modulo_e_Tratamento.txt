@@ -1,0 +1,29 @@
+-------_______-------Modulos e Pacotes--------__________--------
+
+O python ele entende qualquer arquivo .py como um modulo ou seja voce pode apenas dar o sguinte comando:
+
+Programa -> 
+voce pode dar um import assim
+
+import main
+
+-> com isso ele ja iria puxar todas as funções presentes naquele arquivo
+
+agora um pacote é basicamente varios modulos dentro de uma pasta 
+ 
+para cirar um pacote vc cria uma pasta e coloca um arquivo com o nome de "__init__.py"
+e para cada modulo voce cria uma pasta e um arquivo com "__init__.py"
+
+
+-----______------Erros e excessões------________--------
+Try: -> tenta
+  operação
+
+except Exception as erro: -> se der problema
+  falha
+
+else:
+  mostra resultado
+
+finally:
+  certo/falha

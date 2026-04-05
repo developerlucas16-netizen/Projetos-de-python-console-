@@ -1,0 +1,582 @@
+# Faça um programa que mostre de forma de laço o help
+
+import os
+from time import sleep
+
+c = (
+
+   '\033[m', # 0 ->  sem cor
+   '\033[7;30m' # 1 -> branco   
+   # ______letra branca_____ e _____sem estilo______
+   '\033[0;30;41m', # 2 -> bg vermelho
+   '\033[0;30;42m', # 3 -> bg verde
+   '\033[0;30;43m', # 4 -> bg amarelo
+   '\033[0;30;44m', # 5 -> bg azul
+   '\033[0;30;45m', # 6 -> bg roxo
+   '\033[0;30;46m', # 7 -> bg ciano
+   '\033[0;30;47m', # 8 -> bg cinza
+   # ______letra branca_____ e _____estilo Bold______
+   '\033[1;30;41m', # 9 -> bg vermelho
+   '\033[1;30;42m', # 10 -> bg verde
+   '\033[1;30;43m', # 11 -> bg amarelo
+   '\033[1;30;44m', # 12 -> bg azul
+   '\033[1;30;45m', # 13 -> bg roxo
+   '\033[1;30;46m', # 14 -> bg ciano
+   '\033[1;30;47m', # 15 -> bg cinza
+   # ______letra branca_____ e _____estilo underline______
+   '\033[4;30;41m', # 16 -> bg vermelho
+   '\033[4;30;42m', # 17 -> bg verde
+   '\033[4;30;43m', # 18 -> bg amarelo
+   '\033[4;30;44m', # 19 -> bg azul
+   '\033[4;30;45m', # 20 -> bg roxo
+   '\033[4;30;46m', # 21 -> bg ciano
+   '\033[4;30;47m', # 22 -> bg cinza
+   # ______letra branca_____ e _____estilo neagtive______
+   # lembrando que negativo inverte o background com a letra
+   '\033[7;30;41m', # 23 -> bg vermelho
+   '\033[7;30;42m', # 24 -> bg verde
+   '\033[7;30;43m', # 25 -> bg amarelo
+   '\033[7;30;44m', # 26 -> bg azul
+   '\033[7;30;45m', # 27 -> bg roxo
+   '\033[7;30;46m', # 28 -> bg ciano
+   '\033[7;30;47m', # 29 -> bg cinza
+   # ______letra vermelha_____ e _____sem estilo______
+   '\033[0;31;41m', # 30 -> bg vermelho
+   '\033[0;31;42m', # 31 -> bg verde
+   '\033[0;31;43m', # 32 -> bg amarelo
+   '\033[0;31;44m', # 33 -> bg azul
+   '\033[0;31;45m', # 34 -> bg roxo
+   '\033[0;31;46m', # 35 -> bg ciano
+   '\033[0;31;47m', # 36 -> bg cinza
+   # ______letra vermelha_____ e _____estilo Bold______
+   '\033[1;31;41m', # 37 -> bg vermelho
+   '\033[1;31;42m', # 38 -> bg verde
+   '\033[1;31;43m', # 39 -> bg amarelo
+   '\033[1;31;44m', # 40 -> bg azul
+   '\033[1;31;45m', # 41 -> bg roxo
+   '\033[1;31;46m', # 42 -> bg ciano
+   '\033[1;31;47m', # 43 -> bg cinza
+   # ______letra vermelha_____ e _____estilo underline______
+   '\033[4;31;41m', # 44 -> bg vermelho
+   '\033[4;31;42m', # 45 -> bg verde
+   '\033[4;31;43m', # 46 -> bg amarelo
+   '\033[4;31;44m', # 47 -> bg azul
+   '\033[4;31;45m', # 48 -> bg roxo
+   '\033[4;31;46m', # 49 -> bg ciano
+   '\033[4;31;47m', # 50 -> bg cinza
+   # ______letra vermelha_____ e _____estilo neagtive______
+   # lembrando que negativo inverte o background com a letra
+   '\033[7;31;41m', # 51 -> bg vermelho
+   '\033[7;31;42m', # 52 -> bg verde
+   '\033[7;31;43m', # 53 -> bg amarelo
+   '\033[7;31;44m', # 54 -> bg azul
+   '\033[7;31;45m', # 55 -> bg roxo
+   '\033[7;31;46m', # 56 -> bg ciano
+   '\033[7;31;47m', # 57 -> bg cinza
+   # ______letra verde_____ e _____sem estilo______
+   '\033[0;32;41m', # 58 -> bg vermelho
+   '\033[0;32;42m', # 59 -> bg verde
+   '\033[0;32;43m', # 60 -> bg amarelo
+   '\033[0;32;44m', # 61 -> bg azul
+   '\033[0;32;45m', # 62 -> bg roxo
+   '\033[0;32;46m', # 63 -> bg ciano
+   '\033[0;32;47m', # 64 -> bg cinza
+   # ______letra verde_____ e _____estilo Bold______
+   '\033[1;32;41m', # 65 -> bg vermelho
+   '\033[1;32;42m', # 66 -> bg verde
+   '\033[1;32;43m', # 67 -> bg amarelo
+   '\033[1;32;44m', # 68 -> bg azul
+   '\033[1;32;45m', # 69 -> bg roxo
+   '\033[1;32;46m', # 70 -> bg ciano
+   '\033[1;32;47m', # 71 -> bg cinza
+   # ______letra verde_____ e _____estilo underline______
+   '\033[4;32;41m', # 72 -> bg vermelho
+   '\033[4;32;42m', # 73 -> bg verde
+   '\033[4;32;43m', # 74 -> bg amarelo
+   '\033[4;32;44m', # 75 -> bg azul
+   '\033[4;32;45m', # 76 -> bg roxo
+   '\033[4;32;46m', # 77 -> bg ciano
+   '\033[4;32;47m', # 78 -> bg cinza
+   # ______letra verde_____ e _____estilo neagtive______
+   # lembrando que negativo inverte o background com a letra
+   '\033[7;32;41m', # 79 -> bg vermelho
+   '\033[7;32;42m', # 80 -> bg verde
+   '\033[7;32;43m', # 81 -> bg amarelo
+   '\033[7;32;44m', # 82 -> bg azul
+   '\033[7;32;45m', # 83 -> bg roxo
+   '\033[7;32;46m', # 84 -> bg ciano
+   '\033[7;32;47m', # 85 -> bg cinza
+   # ______letra amarelo_____ e _____sem estilo______
+   '\033[0;33;41m', # 86 -> bg vermelho
+   '\033[0;33;42m', # 87 -> bg verde
+   '\033[0;33;43m', # 88 -> bg amarelo
+   '\033[0;33;44m', # 89 -> bg azul
+   '\033[0;33;45m', # 90 -> bg roxo
+   '\033[0;33;46m', # 91 -> bg ciano
+   '\033[0;33;47m', # 92 -> bg cinza
+   # ______letra amarelo_____ e _____estilo Bold______
+   '\033[1;33;41m', # 93 -> bg vermelho
+   '\033[1;33;42m', # 94 -> bg verde
+   '\033[1;33;43m', # 95 -> bg amarelo
+   '\033[1;33;44m', # 96 -> bg azul
+   '\033[1;33;45m', # 97 -> bg roxo
+   '\033[1;33;46m', # 98 -> bg ciano
+   '\033[1;33;47m', # 99 -> bg cinza
+   # ______letra amarelo_____ e _____estilo underline______
+   '\033[4;33;41m', # 100 -> bg vermelho
+   '\033[4;33;42m', # 101 -> bg verde
+   '\033[4;33;43m', # 102 -> bg amarelo
+   '\033[4;33;44m', # 103 -> bg azul
+   '\033[4;33;45m', # 104 -> bg roxo
+   '\033[4;33;46m', # 105 -> bg ciano
+   '\033[4;33;47m', # 106 -> bg cinza
+   # ______letra amarelo_____ e _____estilo neagtive______
+   # lembrando que negativo inverte o background com a letra
+   '\033[7;33;41m', # 107 -> bg vermelho
+   '\033[7;33;42m', # 108 -> bg verde
+   '\033[7;33;43m', # 109 -> bg amarelo
+   '\033[7;33;44m', # 110 -> bg azul
+   '\033[7;33;45m', # 111 -> bg roxo
+   '\033[7;33;46m', # 112 -> bg ciano
+   '\033[7;33;47m', # 113 -> bg cinza
+   # ______letra Azul_____ e _____sem estilo______
+   '\033[0;34;41m', # 114 -> bg vermelho
+   '\033[0;34;42m', # 115 -> bg verde
+   '\033[0;34;43m', # 116 -> bg amarelo
+   '\033[0;34;44m', # 117 -> bg azul
+   '\033[0;34;45m', # 118 -> bg roxo
+   '\033[0;34;46m', # 119 -> bg ciano
+   '\033[0;34;47m', # 120 -> bg cinza
+   # ______letra Azul_____ e _____estilo Bold______
+   '\033[1;34;41m', # 121 -> bg vermelho
+   '\033[1;34;42m', # 122 -> bg verde
+   '\033[1;34;43m', # 123 -> bg amarelo
+   '\033[1;34;44m', # 124 -> bg azul
+   '\033[1;34;45m', # 125 -> bg roxo
+   '\033[1;34;46m', # 126 -> bg ciano
+   '\033[1;34;47m', # 127 -> bg cinza
+   # ______letra Azul_____ e _____estilo underline______
+   '\033[4;34;41m', # 128 -> bg vermelho
+   '\033[4;34;42m', # 129 -> bg verde
+   '\033[4;34;43m', # 130 -> bg amarelo
+   '\033[4;34;44m', # 131 -> bg azul
+   '\033[4;34;45m', # 132 -> bg roxo
+   '\033[4;34;46m', # 133 -> bg ciano
+   '\033[4;34;47m', # 134 -> bg cinza
+   # ______letra Azul_____ e _____estilo neagtive______
+   # lembrando que negativo inverte o background com a letra
+   '\033[7;34;41m', # 135 -> bg vermelho
+   '\033[7;34;42m', # 136 -> bg verde
+   '\033[7;34;43m', # 137 -> bg amarelo
+   '\033[7;34;44m', # 138 -> bg azul
+   '\033[7;34;45m', # 139 -> bg roxo
+   '\033[7;34;46m', # 140 -> bg ciano
+   '\033[7;34;47m', # 141 -> bg cinza
+   # ______letra Roxo_____ e _____sem estilo______
+   '\033[0;35;41m', # 142 -> bg vermelho
+   '\033[0;35;42m', # 143 -> bg verde
+   '\033[0;35;43m', # 144 -> bg amarelo
+   '\033[0;35;44m', # 145 -> bg azul
+   '\033[0;35;45m', # 146 -> bg roxo
+   '\033[0;35;46m', # 147 -> bg ciano
+   '\033[0;35;47m', # 148 -> bg cinza
+   # ______letra Roxo_____ e _____estilo Bold______
+   '\033[1;35;41m', # 149 -> bg vermelho
+   '\033[1;35;42m', # 150 -> bg verde
+   '\033[1;35;43m', # 151 -> bg amarelo
+   '\033[1;35;44m', # 152 -> bg azul
+   '\033[1;35;45m', # 153 -> bg roxo
+   '\033[1;35;46m', # 154 -> bg ciano
+   '\033[1;35;47m', # 155 -> bg cinza
+   # ______letra Roxo_____ e _____estilo underline______
+   '\033[4;35;41m', # 156 -> bg vermelho
+   '\033[4;35;42m', # 157 -> bg verde
+   '\033[4;35;43m', # 158 -> bg amarelo
+   '\033[4;35;44m', # 159 -> bg azul
+   '\033[4;35;45m', # 160 -> bg roxo
+   '\033[4;35;46m', # 161 -> bg ciano
+   '\033[4;35;47m', # 162 -> bg cinza
+   # ______letra Roxo_____ e _____estilo neagtive______
+   # lembrando que negativo inverte o background com a letra
+   '\033[7;35;41m', # 163 -> bg vermelho
+   '\033[7;35;42m', # 164 -> bg verde
+   '\033[7;35;43m', # 165 -> bg amarelo
+   '\033[7;35;44m', # 166 -> bg azul
+   '\033[7;35;45m', # 167 -> bg roxo
+   '\033[7;35;46m', # 168 -> bg ciano
+   '\033[7;35;47m', # 169 -> bg cinza
+   # ______letra Ciano_____ e _____sem estilo______
+   '\033[0;36;41m', # 170 -> bg vermelho
+   '\033[0;36;42m', # 171 -> bg verde
+   '\033[0;36;43m', # 172 -> bg amarelo
+   '\033[0;36;44m', # 173 -> bg azul
+   '\033[0;36;45m', # 174 -> bg roxo
+   '\033[0;36;46m', # 175 -> bg ciano
+   '\033[0;36;47m', # 176 -> bg cinza
+   # ______letra Ciano_____ e _____estilo Bold______
+   '\033[1;36;41m', # 178 -> bg vermelho
+   '\033[1;36;42m', # 179 -> bg verde
+   '\033[1;36;43m', # 180 -> bg amarelo
+   '\033[1;36;44m', # 181 -> bg azul
+   '\033[1;36;45m', # 182 -> bg roxo
+   '\033[1;36;46m', # 183 -> bg ciano
+   '\033[1;36;47m', # 184 -> bg cinza
+   # ______letra Ciano_____ e _____estilo underline______
+   '\033[4;36;41m', # 185 -> bg vermelho
+   '\033[4;36;42m', # 186 -> bg verde
+   '\033[4;36;43m', # 187 -> bg amarelo
+   '\033[4;36;44m', # 189 -> bg azul
+   '\033[4;36;45m', # 190 -> bg roxo
+   '\033[4;36;46m', # 191 -> bg ciano
+   '\033[4;36;47m', # 192 -> bg cinza
+   # ______letra Ciano_____ e _____estilo neagtive______
+   # lembrando que negativo inverte o background com a letra
+   '\033[7;36;41m', # 193 -> bg vermelho
+   '\033[7;36;42m', # 194 -> bg verde
+   '\033[7;36;43m', # 195 -> bg amarelo
+   '\033[7;36;44m', # 196 -> bg azul
+   '\033[7;36;45m', # 197 -> bg roxo
+   '\033[7;36;46m', # 198 -> bg ciano
+   '\033[7;36;47m', # 199 -> bg cinza
+   # ______letra Cinza_____ e _____sem estilo______
+   '\033[0;37;41m', # 200 -> bg vermelho
+   '\033[0;37;42m', # 201 -> bg verde
+   '\033[0;37;43m', # 202 -> bg amarelo
+   '\033[0;37;44m', # 203 -> bg azul
+   '\033[0;37;45m', # 204 -> bg roxo
+   '\033[0;37;46m', # 205 -> bg ciano
+   '\033[0;37;47m', # 206 -> bg cinza
+   # ______letra Cinza_____ e _____estilo Bold______
+   '\033[1;37;41m', # 207 -> bg vermelho
+   '\033[1;37;42m', # 208 -> bg verde
+   '\033[1;37;43m', # 209 -> bg amarelo
+   '\033[1;37;44m', # 210 -> bg azul
+   '\033[1;37;45m', # 211 -> bg roxo
+   '\033[1;37;46m', # 212 -> bg ciano
+   '\033[1;37;47m', # 213 -> bg cinza
+   # ______letra Cinza_____ e _____estilo underline______
+   '\033[4;37;41m', # 214 -> bg vermelho
+   '\033[4;37;42m', # 215 -> bg verde
+   '\033[4;37;43m', # 216 -> bg amarelo
+   '\033[4;37;44m', # 217 -> bg azul
+   '\033[4;37;45m', # 218 -> bg roxo
+   '\033[4;37;46m', # 219 -> bg ciano
+   '\033[4;37;47m', # 220 -> bg cinza
+   # ______letra Cinza_____ e _____estilo neagtive______
+   # lembrando que negativo inverte o background com a letra
+   '\033[7;37;41m', # 221 -> bg vermelho
+   '\033[7;37;42m', # 222 -> bg verde
+   '\033[7;37;43m', # 224 -> bg amarelo
+   '\033[7;37;44m', # 225 -> bg azul
+   '\033[7;37;45m', # 226 -> bg roxo
+   '\033[7;37;46m', # 227 -> bg ciano
+   '\033[7;37;47m' # 228 -> bg cinza
+)
+
+def limpar():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def ajuda(p):
+  """
+  -> p = é o comando que o usuário quer pesquisar no help()
+  """
+  título(f'Acessando o manual do comando \n{p}\n', 203)
+  print(c[2], end="")
+  help(p)
+  print(c[0], end='')
+  sleep(2)
+
+def título(msg, cor = 0):
+   """
+   -> msg = Mostra a mensagem digitada pelo usuário
+   -> cor = ultiza uma lista que mostra algumas cores no background, texto, e estilos
+   -> Código das cores:
+  
+   '\033[m', # 0 ->  sem cor
+   '\033[7;30m' # 1 -> branco   
+   # ______letra branca_____ e _____sem estilo______
+   '\033[0;30;41m', # 2 -> bg vermelho
+   '\033[0;30;42m', # 3 -> bg verde
+   '\033[0;30;43m', # 4 -> bg amarelo
+   '\033[0;30;44m', # 5 -> bg azul
+   '\033[0;30;45m', # 6 -> bg roxo
+   '\033[0;30;46m', # 7 -> bg ciano
+   '\033[0;30;47m', # 8 -> bg cinza
+   # ______letra branca_____ e _____estilo Bold______
+   '\033[1;30;41m', # 9 -> bg vermelho
+   '\033[1;30;42m', # 10 -> bg verde
+   '\033[1;30;43m', # 11 -> bg amarelo
+   '\033[1;30;44m', # 12 -> bg azul
+   '\033[1;30;45m', # 13 -> bg roxo
+   '\033[1;30;46m', # 14 -> bg ciano
+   '\033[1;30;47m', # 15 -> bg cinza
+   # ______letra branca_____ e _____estilo underline______
+   '\033[4;30;41m', # 16 -> bg vermelho
+   '\033[4;30;42m', # 17 -> bg verde
+   '\033[4;30;43m', # 18 -> bg amarelo
+   '\033[4;30;44m', # 19 -> bg azul
+   '\033[4;30;45m', # 20 -> bg roxo
+   '\033[4;30;46m', # 21 -> bg ciano
+   '\033[4;30;47m', # 22 -> bg cinza
+   # ______letra branca_____ e _____estilo neagtive______
+   # lembrando que negativo inverte o background com a letra
+   '\033[7;30;41m', # 23 -> bg vermelho
+   '\033[7;30;42m', # 24 -> bg verde
+   '\033[7;30;43m', # 25 -> bg amarelo
+   '\033[7;30;44m', # 26 -> bg azul
+   '\033[7;30;45m', # 27 -> bg roxo
+   '\033[7;30;46m', # 28 -> bg ciano
+   '\033[7;30;47m', # 29 -> bg cinza
+   # ______letra vermelha_____ e _____sem estilo______
+   '\033[0;31;41m', # 30 -> bg vermelho
+   '\033[0;31;42m', # 31 -> bg verde
+   '\033[0;31;43m', # 32 -> bg amarelo
+   '\033[0;31;44m', # 33 -> bg azul
+   '\033[0;31;45m', # 34 -> bg roxo
+   '\033[0;31;46m', # 35 -> bg ciano
+   '\033[0;31;47m', # 36 -> bg cinza
+   # ______letra vermelha_____ e _____estilo Bold______
+   '\033[1;31;41m', # 37 -> bg vermelho
+   '\033[1;31;42m', # 38 -> bg verde
+   '\033[1;31;43m', # 39 -> bg amarelo
+   '\033[1;31;44m', # 40 -> bg azul
+   '\033[1;31;45m', # 41 -> bg roxo
+   '\033[1;31;46m', # 42 -> bg ciano
+   '\033[1;31;47m', # 43 -> bg cinza
+   # ______letra vermelha_____ e _____estilo underline______
+   '\033[4;31;41m', # 44 -> bg vermelho
+   '\033[4;31;42m', # 45 -> bg verde
+   '\033[4;31;43m', # 46 -> bg amarelo
+   '\033[4;31;44m', # 47 -> bg azul
+   '\033[4;31;45m', # 48 -> bg roxo
+   '\033[4;31;46m', # 49 -> bg ciano
+   '\033[4;31;47m', # 50 -> bg cinza
+   # ______letra vermelha_____ e _____estilo neagtive______
+   # lembrando que negativo inverte o background com a letra
+   '\033[7;31;41m', # 51 -> bg vermelho
+   '\033[7;31;42m', # 52 -> bg verde
+   '\033[7;31;43m', # 53 -> bg amarelo
+   '\033[7;31;44m', # 54 -> bg azul
+   '\033[7;31;45m', # 55 -> bg roxo
+   '\033[7;31;46m', # 56 -> bg ciano
+   '\033[7;31;47m', # 57 -> bg cinza
+   # ______letra verde_____ e _____sem estilo______
+   '\033[0;32;41m', # 58 -> bg vermelho
+   '\033[0;32;42m', # 59 -> bg verde
+   '\033[0;32;43m', # 60 -> bg amarelo
+   '\033[0;32;44m', # 61 -> bg azul
+   '\033[0;32;45m', # 62 -> bg roxo
+   '\033[0;32;46m', # 63 -> bg ciano
+   '\033[0;32;47m', # 64 -> bg cinza
+   # ______letra verde_____ e _____estilo Bold______
+   '\033[1;32;41m', # 65 -> bg vermelho
+   '\033[1;32;42m', # 66 -> bg verde
+   '\033[1;32;43m', # 67 -> bg amarelo
+   '\033[1;32;44m', # 68 -> bg azul
+   '\033[1;32;45m', # 69 -> bg roxo
+   '\033[1;32;46m', # 70 -> bg ciano
+   '\033[1;32;47m', # 71 -> bg cinza
+   # ______letra verde_____ e _____estilo underline______
+   '\033[4;32;41m', # 72 -> bg vermelho
+   '\033[4;32;42m', # 73 -> bg verde
+   '\033[4;32;43m', # 74 -> bg amarelo
+   '\033[4;32;44m', # 75 -> bg azul
+   '\033[4;32;45m', # 76 -> bg roxo
+   '\033[4;32;46m', # 77 -> bg ciano
+   '\033[4;32;47m', # 78 -> bg cinza
+   # ______letra verde_____ e _____estilo neagtive______
+   # lembrando que negativo inverte o background com a letra
+   '\033[7;32;41m', # 79 -> bg vermelho
+   '\033[7;32;42m', # 80 -> bg verde
+   '\033[7;32;43m', # 81 -> bg amarelo
+   '\033[7;32;44m', # 82 -> bg azul
+   '\033[7;32;45m', # 83 -> bg roxo
+   '\033[7;32;46m', # 84 -> bg ciano
+   '\033[7;32;47m', # 85 -> bg cinza
+   # ______letra amarelo_____ e _____sem estilo______
+   '\033[0;33;41m', # 86 -> bg vermelho
+   '\033[0;33;42m', # 87 -> bg verde
+   '\033[0;33;43m', # 88 -> bg amarelo
+   '\033[0;33;44m', # 89 -> bg azul
+   '\033[0;33;45m', # 90 -> bg roxo
+   '\033[0;33;46m', # 91 -> bg ciano
+   '\033[0;33;47m', # 92 -> bg cinza
+   # ______letra amarelo_____ e _____estilo Bold______
+   '\033[1;33;41m', # 93 -> bg vermelho
+   '\033[1;33;42m', # 94 -> bg verde
+   '\033[1;33;43m', # 95 -> bg amarelo
+   '\033[1;33;44m', # 96 -> bg azul
+   '\033[1;33;45m', # 97 -> bg roxo
+   '\033[1;33;46m', # 98 -> bg ciano
+   '\033[1;33;47m', # 99 -> bg cinza
+   # ______letra amarelo_____ e _____estilo underline______
+   '\033[4;33;41m', # 100 -> bg vermelho
+   '\033[4;33;42m', # 101 -> bg verde
+   '\033[4;33;43m', # 102 -> bg amarelo
+   '\033[4;33;44m', # 103 -> bg azul
+   '\033[4;33;45m', # 104 -> bg roxo
+   '\033[4;33;46m', # 105 -> bg ciano
+   '\033[4;33;47m', # 106 -> bg cinza
+   # ______letra amarelo_____ e _____estilo neagtive______
+   # lembrando que negativo inverte o background com a letra
+   '\033[7;33;41m', # 107 -> bg vermelho
+   '\033[7;33;42m', # 108 -> bg verde
+   '\033[7;33;43m', # 109 -> bg amarelo
+   '\033[7;33;44m', # 110 -> bg azul
+   '\033[7;33;45m', # 111 -> bg roxo
+   '\033[7;33;46m', # 112 -> bg ciano
+   '\033[7;33;47m', # 113 -> bg cinza
+   # ______letra Azul_____ e _____sem estilo______
+   '\033[0;34;41m', # 114 -> bg vermelho
+   '\033[0;34;42m', # 115 -> bg verde
+   '\033[0;34;43m', # 116 -> bg amarelo
+   '\033[0;34;44m', # 117 -> bg azul
+   '\033[0;34;45m', # 118 -> bg roxo
+   '\033[0;34;46m', # 119 -> bg ciano
+   '\033[0;34;47m', # 120 -> bg cinza
+   # ______letra Azul_____ e _____estilo Bold______
+   '\033[1;34;41m', # 121 -> bg vermelho
+   '\033[1;34;42m', # 122 -> bg verde
+   '\033[1;34;43m', # 123 -> bg amarelo
+   '\033[1;34;44m', # 124 -> bg azul
+   '\033[1;34;45m', # 125 -> bg roxo
+   '\033[1;34;46m', # 126 -> bg ciano
+   '\033[1;34;47m', # 127 -> bg cinza
+   # ______letra Azul_____ e _____estilo underline______
+   '\033[4;34;41m', # 128 -> bg vermelho
+   '\033[4;34;42m', # 129 -> bg verde
+   '\033[4;34;43m', # 130 -> bg amarelo
+   '\033[4;34;44m', # 131 -> bg azul
+   '\033[4;34;45m', # 132 -> bg roxo
+   '\033[4;34;46m', # 133 -> bg ciano
+   '\033[4;34;47m', # 134 -> bg cinza
+   # ______letra Azul_____ e _____estilo neagtive______
+   # lembrando que negativo inverte o background com a letra
+   '\033[7;34;41m', # 135 -> bg vermelho
+   '\033[7;34;42m', # 136 -> bg verde
+   '\033[7;34;43m', # 137 -> bg amarelo
+   '\033[7;34;44m', # 138 -> bg azul
+   '\033[7;34;45m', # 139 -> bg roxo
+   '\033[7;34;46m', # 140 -> bg ciano
+   '\033[7;34;47m', # 141 -> bg cinza
+   # ______letra Roxo_____ e _____sem estilo______
+   '\033[0;35;41m', # 142 -> bg vermelho
+   '\033[0;35;42m', # 143 -> bg verde
+   '\033[0;35;43m', # 144 -> bg amarelo
+   '\033[0;35;44m', # 145 -> bg azul
+   '\033[0;35;45m', # 146 -> bg roxo
+   '\033[0;35;46m', # 147 -> bg ciano
+   '\033[0;35;47m', # 148 -> bg cinza
+   # ______letra Roxo_____ e _____estilo Bold______
+   '\033[1;35;41m', # 149 -> bg vermelho
+   '\033[1;35;42m', # 150 -> bg verde
+   '\033[1;35;43m', # 151 -> bg amarelo
+   '\033[1;35;44m', # 152 -> bg azul
+   '\033[1;35;45m', # 153 -> bg roxo
+   '\033[1;35;46m', # 154 -> bg ciano
+   '\033[1;35;47m', # 155 -> bg cinza
+   # ______letra Roxo_____ e _____estilo underline______
+   '\033[4;35;41m', # 156 -> bg vermelho
+   '\033[4;35;42m', # 157 -> bg verde
+   '\033[4;35;43m', # 158 -> bg amarelo
+   '\033[4;35;44m', # 159 -> bg azul
+   '\033[4;35;45m', # 160 -> bg roxo
+   '\033[4;35;46m', # 161 -> bg ciano
+   '\033[4;35;47m', # 162 -> bg cinza
+   # ______letra Roxo_____ e _____estilo neagtive______
+   # lembrando que negativo inverte o background com a letra
+   '\033[7;35;41m', # 163 -> bg vermelho
+   '\033[7;35;42m', # 164 -> bg verde
+   '\033[7;35;43m', # 165 -> bg amarelo
+   '\033[7;35;44m', # 166 -> bg azul
+   '\033[7;35;45m', # 167 -> bg roxo
+   '\033[7;35;46m', # 168 -> bg ciano
+   '\033[7;35;47m', # 169 -> bg cinza
+   # ______letra Ciano_____ e _____sem estilo______
+   '\033[0;36;41m', # 170 -> bg vermelho
+   '\033[0;36;42m', # 171 -> bg verde
+   '\033[0;36;43m', # 172 -> bg amarelo
+   '\033[0;36;44m', # 173 -> bg azul
+   '\033[0;36;45m', # 174 -> bg roxo
+   '\033[0;36;46m', # 175 -> bg ciano
+   '\033[0;36;47m', # 176 -> bg cinza
+   # ______letra Ciano_____ e _____estilo Bold______
+   '\033[1;36;41m', # 178 -> bg vermelho
+   '\033[1;36;42m', # 179 -> bg verde
+   '\033[1;36;43m', # 180 -> bg amarelo
+   '\033[1;36;44m', # 181 -> bg azul
+   '\033[1;36;45m', # 182 -> bg roxo
+   '\033[1;36;46m', # 183 -> bg ciano
+   '\033[1;36;47m', # 184 -> bg cinza
+   # ______letra Ciano_____ e _____estilo underline______
+   '\033[4;36;41m', # 185 -> bg vermelho
+   '\033[4;36;42m', # 186 -> bg verde
+   '\033[4;36;43m', # 187 -> bg amarelo
+   '\033[4;36;44m', # 189 -> bg azul
+   '\033[4;36;45m', # 190 -> bg roxo
+   '\033[4;36;46m', # 191 -> bg ciano
+   '\033[4;36;47m', # 192 -> bg cinza
+   # ______letra Ciano_____ e _____estilo neagtive______
+   # lembrando que negativo inverte o background com a letra
+   '\033[7;36;41m', # 193 -> bg vermelho
+   '\033[7;36;42m', # 194 -> bg verde
+   '\033[7;36;43m', # 195 -> bg amarelo
+   '\033[7;36;44m', # 196 -> bg azul
+   '\033[7;36;45m', # 197 -> bg roxo
+   '\033[7;36;46m', # 198 -> bg ciano
+   '\033[7;36;47m', # 199 -> bg cinza
+   # ______letra Cinza_____ e _____sem estilo______
+   '\033[0;37;41m', # 200 -> bg vermelho
+   '\033[0;37;42m', # 201 -> bg verde
+   '\033[0;37;43m', # 202 -> bg amarelo
+   '\033[0;37;44m', # 203 -> bg azul
+   '\033[0;37;45m', # 204 -> bg roxo
+   '\033[0;37;46m', # 205 -> bg ciano
+   '\033[0;37;47m', # 206 -> bg cinza
+   # ______letra Cinza_____ e _____estilo Bold______
+   '\033[1;37;41m', # 207 -> bg vermelho
+   '\033[1;37;42m', # 208 -> bg verde
+   '\033[1;37;43m', # 209 -> bg amarelo
+   '\033[1;37;44m', # 210 -> bg azul
+   '\033[1;37;45m', # 211 -> bg roxo
+   '\033[1;37;46m', # 212 -> bg ciano
+   '\033[1;37;47m', # 213 -> bg cinza
+   # ______letra Cinza_____ e _____estilo underline______
+   '\033[4;37;41m', # 214 -> bg vermelho
+   '\033[4;37;42m', # 215 -> bg verde
+   '\033[4;37;43m', # 216 -> bg amarelo
+   '\033[4;37;44m', # 217 -> bg azul
+   '\033[4;37;45m', # 218 -> bg roxo
+   '\033[4;37;46m', # 219 -> bg ciano
+   '\033[4;37;47m', # 220 -> bg cinza
+   # ______letra Cinza_____ e _____estilo neagtive______
+   # lembrando que negativo inverte o background com a letra
+   '\033[7;37;41m', # 221 -> bg vermelho
+   '\033[7;37;42m', # 222 -> bg verde
+   '\033[7;37;43m', # 224 -> bg amarelo
+   '\033[7;37;44m', # 225 -> bg azul
+   '\033[7;37;45m', # 226 -> bg roxo
+   '\033[7;37;46m', # 227 -> bg ciano
+   '\033[7;37;47m' # 228 -> bg cinza
+   """
+   tam = len(msg) + 4
+   print(c[cor], end='')
+   print("~" * tam)
+   print(f" {msg}")
+   print("~" * tam)
+   print(c[0], end='')
+   sleep(2)
+
+
+# Programa principal
+comando = ''
+while True:
+   título('Sistema de ajuda pyHelp' , 154)
+   comando = str(input('Função blibioteca > '))
+   if comando.upper() == "FIM":
+      break
+      sleep(2)
+   else:
+      ajuda(comando)
+      sleep(2)
+título('Até logo!', 200)
